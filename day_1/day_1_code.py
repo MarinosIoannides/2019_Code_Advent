@@ -34,11 +34,7 @@ What is the sum of the fuel requirements for all of the modules on your spacecra
 """
 # First, make anything less than zero =  0
 def single_fuel(mass):
-    fuel = (mass // 3) -2
-    if fuel > 0:
-        return fuel
-    else:
-        return 0
+    return max((mass // 3) -2, 0)
 
 # Calculate the total fuel requirement for one module
 def fuel_for_fuel(weight):
@@ -49,7 +45,5 @@ def fuel_for_fuel(weight):
         new_fuel = single_fuel(new_fuel)
     return total
 
-spaceship_total = 0
-for weight in cleaned_data:
-    spaceship_total += fuel_for_fuel(weight)
+spaceship_total = sum(fuel_for_fuel(weight) for weight in cleaned_data)
 print(spaceship_total)
