@@ -13,13 +13,16 @@ cleaned_data = [int(line) for line in lines]
 To find the fuel required for a module, take its mass, divide by three, round down, and subtract 2.
 """
 # Method 1 - Looping through list
-total_fuel = 0
-for mass in cleaned_data:
-    fuel = (mass // 3) -2
-    total_fuel += fuel
+def total_fuel_loop(list_of_weights):
+    total_fuel = 0
+    for mass in list_of_weights:
+        fuel = (mass // 3) -2
+        total_fuel += fuel
+    return total_fuel
 
 # Method 2 - more "pythonic"
-total_fuel_2 = sum((mass // 3) - 2 for mass in cleaned_data)
+def total_fuel_pythonic(list_of_weights):
+    return sum((mass // 3) - 2 for mass in list_of_weights)
 
 # The code gives the right answer according to the website
 # TODO: Design some unit tests for this to make sure it's right
