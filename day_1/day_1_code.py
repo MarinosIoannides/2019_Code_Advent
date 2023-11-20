@@ -25,5 +25,31 @@ def total_fuel_pythonic(list_of_weights):
     return sum((mass // 3) - 2 for mass in list_of_weights)
 
 # The code gives the right answer according to the website
-# TODO: Design some unit tests for this to make sure it's right
 # TODO: Write a pre-commit hook to run the tests
+"""
+What is the sum of the fuel requirements for all of the modules on your spacecraft when also taking into account the mass of the added fuel?
+
+(Calculate the fuel requirements for each module separately, then add them all up at the end.)
+
+"""
+# First, make anything less than zero =  0
+def single_fuel(mass):
+    fuel = (mass // 3) -2
+    if fuel > 0:
+        return fuel
+    else:
+        return 0
+
+# Calculate the total fuel requirement for one module
+def fuel_for_fuel(weight):
+    total = 0
+    new_fuel = single_fuel(weight)
+    while new_fuel != 0:
+        total += new_fuel
+        new_fuel = single_fuel(new_fuel)
+    return total
+
+spaceship_total = 0
+for weight in cleaned_data:
+    spaceship_total += fuel_for_fuel(weight)
+print(spaceship_total)
