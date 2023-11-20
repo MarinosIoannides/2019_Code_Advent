@@ -44,8 +44,6 @@ def test_indiv_calc(input, expected_output):
 def test_fuel_for_fuel(input, expected_output):
     calculation = fuel_for_fuel(input)
     assert calculation == expected_output
-
-
 # Day 3
 from day_3.day_3_code import closest_crossover, shortest_crossover
 @pytest.mark.parametrize(
@@ -84,3 +82,28 @@ def test_closest_crossover(wire_1, wire_2 , expected_output):
 def test_shortest_crossover(wire_1, wire_2 , expected_output):
     calculation = shortest_crossover(wire_1, wire_2)
     assert calculation == expected_output
+
+# Day 4
+
+from day_4.day_4_code import find_pair
+@pytest.mark.parametrize(
+    "number_list, has_pair",
+    [
+        (
+            ["1", "1", "1", "2", "3"],
+            False
+        ),
+        (
+            ["1", "1", "2", "3", "3"],
+            True
+        ),
+        (
+            ["2", "1", "2", "4", "3"],
+            True
+        )
+    ]
+)
+def test_find_pair(number_list, has_pair):
+    calculation = find_pair(number_list)
+    assert calculation == has_pair
+

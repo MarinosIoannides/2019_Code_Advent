@@ -56,6 +56,22 @@ def pathing(wire):
     return wire_path
 
 def closest_crossover(wire_1, wire_2):
+    """
+    Finds the closest crossover point between two wires.
+    Closest here is defined as Mahnattan distance (https://en.wikipedia.org/wiki/Taxicab_geometry)
+
+    Parameters
+    ----------
+        wire_1 : list[str]
+    A list of strings which have the format LetterNumber e.g. N20    
+        wire_2 : list[str]
+    A list of strings which have the format LetterNumber e.g. N20
+
+    Returns
+    -------
+        distance: int
+    The distance to the intersection returned is the one closest (Manhattan distance) to (0,0)
+    """
     one_path = set(pathing(wire_1))
     two_path = set(pathing(wire_2))
     intersections = one_path.intersection(two_path)
@@ -70,6 +86,22 @@ def closest_crossover(wire_1, wire_2):
 print(closest_crossover(wire_1, wire_2))
 
 def shortest_crossover(wire_1, wire_2):
+    """
+    Finds the closest crossover point between two wires.
+    Closest here is defined as the sum of the wire's lengths to the point
+
+    Parameters
+    ----------
+        wire_1 : list[str]
+    A list of strings which have the format LetterNumber e.g. N20    
+        wire_2 : list[str]
+    A list of strings which have the format LetterNumber e.g. N20
+
+    Returns
+    -------
+        distance: int
+    The distance to the intersection which has the shortest wire length to the point
+    """
     one_path = pathing(wire_1)
     two_path = pathing(wire_2)
     intersections = set(one_path).intersection(set(two_path))
