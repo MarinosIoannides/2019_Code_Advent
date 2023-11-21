@@ -100,8 +100,11 @@ def closet_commom_orbit(route_1, route_2):
     for position in route_2:
         if position in route_1:
             common = position
-            print(common)
             distance = route_1.index(common) + route_2.index(common) -2 # We have to -2 because it is the distance from the objects we are orbiting, not to eachother.
             return distance
 
-print(closet_commom_orbit(san_route, you_route))
+def from_san_to_me(orbit_list):
+    san_route = route_to_com(direct_orbits(orbit_list), "SAN")
+    me_route = route_to_com(direct_orbits(orbit_list), "YOU")
+    return closet_commom_orbit(san_route, me_route)
+
