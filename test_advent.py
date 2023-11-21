@@ -107,3 +107,19 @@ def test_find_pair(number_list, has_pair):
     calculation = find_pair(number_list)
     assert calculation == has_pair
 
+# Day 6
+from day_6.day_6_code import sum_orbits
+@pytest.mark.parametrize(
+    "orbit_list, total_orbits",
+    [
+        (
+            ["COM)B", "B)C", "C)D", "D)E",
+            "E)F", "B)G", "G)H", "D)I", "E)J",
+            "J)K", "K)L"],
+            42
+        )
+    ]
+)
+def test_sum_orbits(orbit_list, total_orbits):
+    calculation = sum_orbits(orbit_list)
+    assert calculation == total_orbits
